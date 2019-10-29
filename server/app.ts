@@ -1,20 +1,21 @@
-import express = require('express');
+import express from 'express';
+import * as bodyParser from 'body-parser';
+import routes from './routes';
+import cors from "cors";
 
-export default class Server {
+class Server {
   public app: express.Application;
-  public port: number;
-
-  constructor( port: number ) {
-    this.port = port;
+  constructor() {
     this.app = express();
+    this.config();
   }
+  private config(): void {
+    this.app.use(cors());
+    this.app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({extended: false}));
 
-  static init ( port: number ) {
-    return new Server( port )
-  }
-
-  start ( callback: Function ) {
-    // @ts-ignore
-    this.app.listen( this.port, callback );
+    this.app.use("/api", routes);
   }
 }
+
+export default new Server().app;
