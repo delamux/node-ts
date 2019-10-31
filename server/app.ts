@@ -1,6 +1,6 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
-import routes from './routes';
+import router from './routes';
 import cors from "cors";
 
 class Server {
@@ -14,7 +14,7 @@ class Server {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({extended: false}));
 
-    this.app.use("/api", routes);
+    this.app.use("/api", router);
   }
 }
 
