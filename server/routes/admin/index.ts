@@ -1,9 +1,12 @@
-import {Router, Request, Response} from 'express';
+import {Router} from 'express';
+import {index} from "../../controllers/adminController";
 
 const router = Router();
 
-router.get('/', (req: Request, res: Response) => {
-  res.send(`<h1>Hello</h1>`);
-});
+router.get('/', index);
 
-export default router;
+
+let adminRoutes: Router;
+adminRoutes = router;
+
+export default adminRoutes;
