@@ -1,12 +1,13 @@
 import app from './app';
 import colors from 'colors';
+import MongoHandler from './config/db/mongodb';
 
 colors.enable();
-// use this line to get port from environment variable
-const PORT = process.env.PORT || 3001;
+const portNumber = process.env.PORT || 3000 ;
 
-app.listen(PORT, () => {
+app.listen(portNumber, () => {
   // @ts-ignore
-  let port = PORT.toString();
-  console.log("Listening on port: " + port.cyan);
+  new MongoHandler();
+  const port = portNumber.toString();
+  console.log('The server is running on port: ' + port.cyan + ' Online'.green);
 });
