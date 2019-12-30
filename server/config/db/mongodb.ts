@@ -6,14 +6,14 @@ export class MongoHandler {
   constructor() {
     MongoClient.connect(
       'mongodb://localhost:27017/nodets',
-      {useUnifiedTopology: true,  useNewUrlParser: true},
+      { useUnifiedTopology: true, useNewUrlParser: true },
       (err) => {
-        if (err) {
+        if ( err ) {
           const errorName = err.name;
-          console.log(`${errorName.red}: An error occurred connecting to ${'MongoDB'.yellow}.`);
-          throw err
+          console.log( `${errorName.red}: An error occurred connecting to ${'MongoDB'.yellow}.` );
+          throw err;
         }
-      });
+      } );
   }
 
   public disconnect(): void {

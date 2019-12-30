@@ -1,9 +1,9 @@
-import {Router} from 'express';
-import {index} from "../../controllers/adminController";
+import { Router } from 'express';
+import { index } from '../../controllers/adminController';
 
 const router = Router();
 
-router.get('/', index);
+router.get( '/', index );
 
 
 let adminRoutes: Router;

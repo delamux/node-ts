@@ -10,15 +10,15 @@ export interface IUser extends Document {
   status: boolean;
 }
 
-mongoose.set('useFindAndModify', false);
-const uniqueValidator = require('mongoose-unique-validator');
+mongoose.set( 'useFindAndModify', false );
+const uniqueValidator = require( 'mongoose-unique-validator' );
 
 const validRoles = {
   values: ['ADMIN_ROLE', 'USER_ROLE'],
   message: '{VALUE} no es un rol válido'
 };
 
-const userSchema = new  Schema( {
+const userSchema = new Schema( {
   firstName: {
     type: String,
     required: [true, 'The name is required']
@@ -49,7 +49,7 @@ const userSchema = new  Schema( {
     type: Boolean,
     default: true
   }
-});
+} );
 
 userSchema.methods.toJSON = function () {
   let user = this;
@@ -60,6 +60,6 @@ userSchema.methods.toJSON = function () {
   return userObject;
 };
 
-userSchema.plugin(uniqueValidator, {message: '{PATH}'});
+userSchema.plugin( uniqueValidator, { message: '{PATH}' } );
 
-export default mongoose.model<IUser>('User', userSchema);
+export default mongoose.model<IUser>( 'User', userSchema );
