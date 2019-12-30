@@ -13,5 +13,6 @@ const initServer = async () => {
 initServer()
   .then(() => {
   const port = portNumber.toString();
+  console.log('MongoDB '.yellow + 'Online'.green)
   console.log('The server is running on port: ' + port.cyan + ' Online'.green);
 });

@@ -8,8 +8,11 @@ export class MongoHandler {
       'mongodb://localhost:27017/nodets',
       {useUnifiedTopology: true,  useNewUrlParser: true},
       (err) => {
-        if (err) throw err;
-        console.log('MongoDB '.yellow + 'Online'.green)
+        if (err) {
+          const errorName = err.name;
+          console.log(`${errorName.red}: An error occurred connecting to ${'MongoDB'.yellow}.`);
+          throw err
+        }
       });
   }
 
